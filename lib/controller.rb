@@ -13,8 +13,8 @@ class Controller
   end
 
   def create
-    name        = @view.get_name
-    description = @view.get_desc
+    name        = @view.ask_user_for_name
+    description = @view.ask_user_for_desc
     recipe      = Recipe.new(name, description)
     @cookbook.add_recipe(recipe)
   end
@@ -22,7 +22,7 @@ class Controller
   def destroy
     list
     unless @cookbook.all.empty?
-      indice = @view.get_indice
+      indice = @view.ask_user_for_indice
       @cookbook.remove_recipe(indice)
     end
   end
